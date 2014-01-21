@@ -1,0 +1,13 @@
+normal['nginx']['version'] = '1.5.7'
+default['nginx']['init_style'] = 'upstart'
+default['nginx']['user'] = 'www-data'
+default['nginx']['group'] = 'www-data'
+default['nginx']['default_site_enabled'] = false
+default['nginx']['dir'] = "/usr/local/nginx/conf"
+normal['nginx']['source']['prefix'] = "/usr/local/nginx"
+default['nginx']['source']['version'] = node['nginx']['version']
+default['nginx']['source']['url'] = "http://nginx.org/download/nginx-#{node['nginx']['source']['version']}.tar.gz"
+default['nginx']['source']['conf_path'] = "#{node['nginx']['source']['prefix']}/conf/nginx.conf"
+normal['nginx']['source']['sbin_path'] = "#{node['nginx']['source']['prefix']}/sbin/nginx"
+default['nginx']['source']['modules'] = ["nginx::http_gzip_static_module", "nginx::http_ssl_module"]
+default['nginx']['source']['checksum'] = '96a5ac866323e4fef502e774d098b445dd898e44cdaea6afa68a68ab5de2e7f1'
