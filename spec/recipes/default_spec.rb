@@ -17,7 +17,8 @@ describe "nginx-zoo::default" do
   end
 
   it "should tell nginx to restart" do
-    expect(chef_run).to notify('service[nginx]').to(:restart)
+    r = chef_run.cookbook_file("/usr/local/nginx/conf/nginx.conf")
+    expect(r).to notify('service[nginx]').to(:restart)
   end
 
 end
